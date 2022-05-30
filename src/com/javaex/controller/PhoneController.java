@@ -27,9 +27,16 @@ public class PhoneController extends HttpServlet {
 	//get방식으로 요청시 호출 메소드
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 코드작성
-		System.out.println("controller");
 		
+		String action = request.getParameter("action");
+		System.out.println(action);
 		
+		if (action.equals("writeForm")) {
+			System.out.println("등록폼");
+			
+		}
+		
+		/*
 		PhoneDao phoneDao = new PhoneDao();
 		List<PersonVo> phoneList = phoneDao.personSelect();
 		System.out.println(phoneList);
@@ -40,6 +47,7 @@ public class PhoneController extends HttpServlet {
 		//데이터 + html --> jsp 시킨다
 		RequestDispatcher rd = request.getRequestDispatcher("/list.jsp");
 		rd.forward(request, response);
+		*/
 		
 	}
 	

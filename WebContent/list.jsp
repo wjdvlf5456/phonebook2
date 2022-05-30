@@ -2,11 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import = "com.javaex.vo.PersonVo" %>
+<%@	page import = "com.javaex.dao.PhoneDao" %>
 
 
     
 <%
-	List<PersonVo> personList = (List<PersonVo>)request.getAttribute("pList");
+	//List<PersonVo> personList = (List<PersonVo>)request.getAttribute("pList");
+
+	PhoneDao phoneDao = new PhoneDao();
+	List<PersonVo> personList = phoneDao.personSelect();
 %>
 <!DOCTYPE html>
 <html>
