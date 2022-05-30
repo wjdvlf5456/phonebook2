@@ -55,7 +55,7 @@ public class PhoneController extends HttpServlet {
 			
 		} else if("writeForm".equals(action)) { //등록폼일 때
 			//포워드
-			RequestDispatcher rd = request.getRequestDispatcher("./writeForm.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/writeForm.jsp");
 			rd.forward(request, response);
 			
 		} else if("write".equals(action)) {	//등록일 때	
@@ -89,22 +89,34 @@ public class PhoneController extends HttpServlet {
 			//리다이렉트 list
 			response.sendRedirect("./pbc?action=list");
 			
+		} else if("updateForm".equals(action)) { //등록폼일 때
+			//포워드
+			RequestDispatcher rd = request.getRequestDispatcher("/updateForm.jsp");
+			rd.forward(request, response);
+			
+			
+		} else if("update".equals(action)){	// 수정할 때
+			//파라미터 꺼내기
+			int id = Integer.parseInt(request.getParameter("id"));
+			String name = request.getParameter("name");
+			String hp = request.getParameter("hp");
+			String company = request.getParameter("company");
+			
+			//PersonVo 만들기
+			PersonVo personVo = new PersonVo(id, name, hp, company);
+			
+			//PhoneDao personUpdate()로 수정하기
+			PhoneDao phoneDao = new PhoneDao();	
+			int count = phoneDao.personUpdate(personVo);
+			
+			//리다이렉트 list
+			response.sendRedirect("/phonebook2/pbc?action=list");
+			
+			
+			
 		} else {
 			System.out.println("action 파라미터 없음");
 		}
-		
-		/*
-		PhoneDao phoneDao = new PhoneDao();
-		List<PersonVo> phoneList = phoneDao.personSelect();
-		System.out.println(phoneList);
-		
-		//request에 데이터 추가
-		request.setAttribute("pList", phoneList);
-		
-		//데이터 + html --> jsp 시킨다
-		RequestDispatcher rd = request.getRequestDispatcher("/list.jsp");
-		rd.forward(request, response);
-		*/
 		
 	}
 	
