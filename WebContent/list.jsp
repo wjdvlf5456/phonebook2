@@ -39,10 +39,14 @@
 					<td>회사(company)</td>
 					<td><%=personList.get(i).getCompany() %></td>
 				</tr>
+				<tr>
+					<td>[수정폼]</td>
+					<td><a href = "./pbc?action=delete&id=<%=personList.get(i).getPersonId()%>">[삭제] </a></td>
+				</tr>
 			</table>
 		<br>
 		<%} %>
-		<a href = "">추가번호 등록</a>
+		<a href = "./pbc?action=writeForm">추가번호 등록</a>
 	
 	</body>
 </html>
