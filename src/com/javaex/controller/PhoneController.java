@@ -51,7 +51,7 @@ public class PhoneController extends HttpServlet {
 			request.setAttribute("pList", phoneList);
 			
 			//데이터 + html --> jsp 시킨다
-			WebUitl.forward(request, response, "/list.jsp");
+			WebUitl.forward(request, response, "/WEB-INF/list.jsp");
 			
 			
 			
@@ -60,7 +60,7 @@ public class PhoneController extends HttpServlet {
 			
 		} else if("writeForm".equals(action)) { //등록폼일 때
 			//포워드
-			WebUitl.forward(request, response, "/writeForm.jsp");
+			WebUitl.forward(request, response, "/WEB-INF/writeForm.jsp");
 			
 			/*
 			RequestDispatcher rd = request.getRequestDispatcher("/writeForm.jsp");
@@ -83,7 +83,7 @@ public class PhoneController extends HttpServlet {
 			System.out.println(count);
 			
 			//리다이렉트 list
-			WebUitl.forward(request, response,"/list.jsp");
+			WebUitl.forward(request, response,"/WEB-INF/list.jsp");
 			
 			//response.sendRedirect("/phonebook2/pbc?action=list");
 			
@@ -97,14 +97,14 @@ public class PhoneController extends HttpServlet {
 			int count = phoneDao.persondelete(id);
 			
 			//리다이렉트 list
-			WebUitl.forward(request, response, "/list.jsp");
+			WebUitl.forward(request, response, "/WEB-INF/list.jsp");
 			
 			/*
 			response.sendRedirect("./pbc?action=list");
 			*/
 		} else if("updateForm".equals(action)) { //등록폼일 때
 			//포워드
-			RequestDispatcher rd = request.getRequestDispatcher("/updateForm.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/updateForm.jsp");
 			rd.forward(request, response);
 			
 			
